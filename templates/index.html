@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block body_class %}index-background{% endblock %}
+
+{% block body %}
+
+<!-- <div class="container-fluid">
+
+  <div class="jumbotron jumbotron-fluid position-relative p-0">
+        <img src="{{ url_for('static', filename='images/arnold.jpg') }}" alt="Arnold Schwarzenegger" class="w-100" style="height: 50vh; object-fit: cover;">
+        
+        <div class="position-absolute top-50 start-0 translate-middle-y text-black ps-5">
+          <h1 class="display-3 fw-bold">Your Best</h1>
+          <h1 class="display-3 fw-bold">Physique Is</h1>
+          <h1 class="display-3 fw-bold">Waiting For You</h1>
+        </div>
+      </div>
+
+</div> -->
+
+<div class="jumbotron">
+  <img src="{{ url_for('static', filename='images/arnold.jpg') }}" alt="Arnold Schwarzenegger" class="w-100" style="height: 50vh; object-fit: cover;">
+</div>
+
+<div class="container text-center my-4 index-header">
+  <h1 class="display-3 fw-bold">Your Best</h1>
+  <h1 class="display-3 fw-bold">Physique Is</h1>
+  <h1 class="display-3 fw-bold">Waiting For You</h1>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img class="card-img-top" src="{{ url_for('static', filename='images/protein2.jpg') }}">
+        <div class="card-body">
+          <button type="button" class="btn btn-dark card1-title"><h5>Supplements</h5></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img class="card-img-top" src="{{ url_for('static', filename='images/lex-little.jpg') }}">
+        <div class="card-body">
+          <button type="button" class="btn btn-dark card1-title"><h5>Coaching</h5></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img class="card-img-top" src="{{ url_for('static', filename='images/sam.jpg') }}">
+        <div class="card-body">
+          <button type="button" class="btn btn-dark card1-title"><h5>Clothing</h5></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

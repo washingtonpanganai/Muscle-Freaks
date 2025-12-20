@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block body_class %}edit-background{% endblock %}
+
+{% block body %}
+
+<div class="content">
+        <h2 class="text-center my-4 chat-header">Edit Thread</h2>
+
+        <form action="/edit/{{ thread.id }}" method="POST" class="chat-forum">
+            <h5 class="threadNameHeader">Thread Name</h5>
+            <input type="text" name="thread_title" value="{{ thread.threadTitle }}" class="threadNameClass">
+
+            <h5 class="yapHeader">Your Thoughts</h5>
+            <textarea name="thread_content" rows="4" cols="50" class="yapClass">{{ thread.threadContent }}</textarea>
+
+            <input type="submit" value="Edit">
+        </form>
+    </div>
+    
+    {% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block body_class %}chat-background{% endblock %}
+
+{% block body %}
+
+<div class = "content">
+
+<h2 class="text-center my-4 chat-header">Speak Your Mind!</h2>
+
+<!-- <form action="/action_page.php" class="chat-forum">
+  <p><label for="w3review">Review of W3Schools:</label></p>
+  <input type="text" value="Thread Title">
+  <textarea id="w3review" name="w3review" rows="4" cols="50">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
+  <br>
+  <input type="submit" value="Submit">
+</form> -->
+
+<form action="/add" method="POST" class="chat-forum">
+  <h5 class="threadNameHeader">Thread Name</h5>
+  <input type="text" name ="thread_title"placeholder="Thread Name" class="threadNameClass">
+
+  <h5 class="yapHeader">Your Thoughts</h5>
+  <textarea name ="thread_content" rows="4" cols="50" placeholder="Yap" class="yapClass"></textarea>
+
+  <input type="submit" value="Submit">
+</form>
+
+<br>
+
+<h1 class="chat-Header">
+  Recent Threads
+</h1>
+
+<table class="chat-table">
+  <thead>
+    <th>Id</th>
+    <th>Thread Name</th>
+    <th>Content</th>
+    <th>#</th>
+    <th>#</th>
+  </thead>
+  {% for data in threads %}
+  <tbody>
+    <td>{{data.id}}</td>
+    <td>{{data.threadTitle}}</td>
+    <td>{{data.threadContent}}</td>
+    <td><a href="/delete/{{data.id}}" type="button">Delete</a></td>
+    <td><a href="/edit/{{data.id}}" type="button">Edit</a></td>
+  </tbody>
+  {% endfor%}
+</table>
+</div>
+
+{% endblock %}
