@@ -5,14 +5,13 @@
 {% block body %}
 
 <div class="content">
-        <h2 class="text-center my-4 chat-header">Edit Thread</h2>
+        <h2 class="text-center my-4 chat-header">Edit Review</h2>
 
-        <form action="/edit/{{ thread.id }}" method="POST" class="chat-forum">
-            <h5 class="threadNameHeader">Thread Name</h5>
-            <input type="text" name="thread_title" value="{{ thread.threadTitle }}" class="threadNameClass">
-
+        <form action="/edit/{{ review.id }}" method="POST" class="chat-forum">
+            <h5 class="reviewNameHeader">Review Name</h5>
+            <input type="text" name="review_title" value="{{ review.reviewTitle }}" class="reviewNameClass">
             <h5 class="yapHeader">Your Thoughts</h5>
-            <textarea name="thread_content" rows="4" cols="50" class="yapClass">{{ thread.threadContent }}</textarea>
+            <textarea name="review_content" rows="4" cols="50" class="yapClass">{{ review.reviewContent }}</textarea>
 
             <input type="submit" value="Edit">
         </form>

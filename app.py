@@ -19,57 +19,58 @@ db = SQLAlchemy(app)
 #     def __repr__(self):
 #         return f"Supplement {self.id}"
 
-class Thread(db.Model):
+class Review(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    threadTitle = db.Column(db.String(100), nullable=False)
-    threadContent = db.Column(db.String(500), nullable=False)
+    reviewTitle = db.Column(db.String(100), nullable=False)
+    reviewContent = db.Column(db.String(500), nullable=False)
 
     def __repr__(self):
-        return f"Title : {self.threadTitle}, Content: {self.threadContent}"
-
+        return f"Title : {self.reviewTitle}, Content: {self.reviewContent}"
 @app.route("/")
 def hello_world():
     return render_template("index.html")
 
 
-@app.route("/chat")
-def chat():
-    threads = Thread.query.all()
-    return render_template("chat.html", threads=threads)
+@app.route("/review")
+def review():
+    reviews = Review.query.all()
+    return render_template("review.html", reviews=reviews)
 
 @app.route("/add", methods=["POST"])
-def add_thread():
-    thread_title = request.form.get("thread_title")
-    thread_content = request.form.get("thread_content")
+def add_review():
+    review_title = request.form.get("review_title")
+    review_content = request.form.get("review_content")
 
-    new_thread = Thread(threadTitle=thread_title, threadContent=thread_content)
-    db.session.add(new_thread)
+    new_review = Review(reviewTitle=review_title, reviewContent=review_content)
+    db.session.add(new_review)
     db.session.commit()
 
-    return redirect("/chat")
+    return redirect("/review")
 
 @app.route('/delete/<int:id>')
 def erase(id):
-    data = Thread.query.get(id)
+    data = Review.query.get(id)
     db.session.delete(data)
     db.session.commit()
-    return redirect('/chat')
+    return redirect('/review')
 
 @app.route("/edit/<int:id>", methods=["GET", "POST"])
 def edit(id:int):
-    thread = Thread.query.get_or_404(id)
+    review = Review.query.get_or_404(id)
     if request.method == "POST":
-        thread.threadContent = request.form['thread_content']
+        review.reviewTitle = request.form['review_title']
+        review.reviewContent = request.form['review_content']
         try:
             db.session.commit()
-            return redirect("/chat")
+            return redirect("/review")
         except Exception as e:
             return f"ERROR:{e}"
     else:
-        return render_template('edit.html', thread=thread)
+        return render_template('edit.html', review=review)
 
 if __name__ == "__main__":
     with app.app_context():
+        db.drop_all()
         db.create_all()
 
     app.run(debug=True)
