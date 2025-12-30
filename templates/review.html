@@ -20,8 +20,8 @@
   <h5 class="reviewNameHeader">Review Name</h5>
   <input type="text" name ="review_title"placeholder="Review Name" class="reviewNameClass">
 
-  <h5 class="yapHeader">Your Thoughts</h5>
-  <textarea name ="review_content" rows="4" cols="50" placeholder="Yap" class="yapClass"></textarea>
+  <h5 class="yapHeader">Review Content</h5>
+  <textarea name ="review_content" rows="4" cols="50" placeholder="Review Content" class="yapClass"></textarea>
   <input type="submit" value="Submit">
 </form>
 
@@ -31,24 +31,61 @@
   Recent Reviews
 </h1>
 
-<table class="chat-table">
-  <thead>
-    <th>Id</th>
-    <th>Review Name</th>
-    <th>Content</th>
-    <th>Delete</th>
-    <th>Edit</th>
-  </thead>
-  {% for data in reviews %}
-  <tbody>
-    <td>{{data.id}}</td>
-    <td>{{data.reviewTitle}}</td>
+<!-- <table class="chat-table"> -->
+  <!-- <thead> -->
+    <!-- <th>Id</th> -->
+    <!-- <th>Review Name</th>
+    <th>Content</th> -->
+    <!-- <th>Delete</th>
+    <th>Edit</th> -->
+  <!-- </thead> -->
+  <!-- {% for data in reviews %}
+  <tbody class="review-block">
+    <tr>
+        <th>
+          Review Name
+        </th>
+    </tr>
+    <tr> -->
+    <!-- <td>{{data.id}}</td> -->
+    <!-- <td>{{data.reviewTitle}}</td>
+    </tr>
+    <tr>
+        <th>
+          Review Content
+        </th>
+    </tr>
+    <tr>
     <td>{{data.reviewContent}}</td>
+    </tr>
     <td><a href="/delete/{{data.id}}" type="button">Delete</a></td>
     <td><a href="/edit/{{data.id}}" type="button">Edit</a></td>
   </tbody>
   {% endfor%}
-</table>
+</table> -->
+
+<div class="container">
+  {% for data in reviews %}
+    <div class="card bg-dark text-white mb-4 shadow mx-auto" style="max-width: 700px;">
+      <div class="card-body">
+
+        <h5 class="card-title">Review Name</h5>
+        <p class="card-text">{{ data.reviewTitle }}</p>
+
+        <h6 class="mt-3">Review Content</h6>
+        <p class="card-text">{{ data.reviewContent }}</p>
+
+        <div class="mt-3">
+          <a href="/delete/{{ data.id }}" class="btn btn-custom-green btn-sm">Delete</a>
+          <a href="/edit/{{ data.id }}" class="btn btn-custom-green btn-sm">Edit</a>
+
+          
+        </div>
+
+      </div>
+    </div>
+  {% endfor %}
+</div>
 </div>
 
 {% endblock %}
