@@ -26,6 +26,15 @@ class Review(db.Model):
 
     def __repr__(self):
         return f"Title : {self.reviewTitle}, Content: {self.reviewContent}"
+    
+class Supplement(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    supplementName = db.Column(db.String(100), nullable=False)
+    supplementDescription = db.Column(db.String(200), nullable=False)
+
+    def __repr__(self):
+        return f"Name {self.supplementName}, Description { self.supplementDescription}"
+    
 @app.route("/")
 def hello_world():
     return render_template("index.html")
@@ -67,9 +76,22 @@ def edit(id:int):
             return f"ERROR:{e}"
     else:
         return render_template('edit.html', review=review)
-
+    
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    if request.method == "POST":
+        search_query = request.form['searchBox']
+        results = Supplement.query.filter(Supplement.supplementName.ilike(f"%{search_query}%")).all()
+        return render_template('results.html', results=results)
+    return redirect("/")
+        
 if __name__ == "__main__":
     with app.app_context():
+        db.drop_all()
         db.create_all()
+
+        s = Supplement(supplementName="Creatine", supplementDescription="Helps strength")
+        db.session.add(s)
+        db.session.commit()
 
     app.run(debug=True)
