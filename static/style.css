@@ -134,4 +134,15 @@ input[type=submit]:hover {
 
 .edit-background {
   background-color: #212529;
+}
+
+.results-background {
+  background-color: #212529;
+  color: white;
+}
+
+.search_results_header {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }/*# sourceMappingURL=style.css.map */

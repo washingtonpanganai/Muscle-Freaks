@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 
+{% block body_class %}results-background{% endblock %}
+
 {% block body %}
+
+<div class="search_results_header">
 <h1>Search Results</h1>
+</div>
 
 {% if results %}
   <ul>
@@ -17,3 +22,6 @@
 {% endif %}
 
 {% endblock %}
+
+<!-- To add pictures to the database, in the model add an image field and put the image name,
+then when creating the supplement object add the image name as a string. -->

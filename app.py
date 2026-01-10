@@ -31,12 +31,13 @@ class Supplement(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     supplementName = db.Column(db.String(100), nullable=False)
     supplementDescription = db.Column(db.String(200), nullable=False)
+    # image = db.Column(db.String(200), nullable=True)
 
     def __repr__(self):
         return f"Name {self.supplementName}, Description { self.supplementDescription}"
     
 @app.route("/")
-def hello_world():
+def index():
     return render_template("index.html")
 
 
@@ -77,8 +78,8 @@ def edit(id:int):
     else:
         return render_template('edit.html', review=review)
     
-@app.route("/search", methods=["GET", "POST"])
-def search():
+@app.route("/results", methods=["GET", "POST"])
+def results():
     if request.method == "POST":
         search_query = request.form['searchBox']
         results = Supplement.query.filter(Supplement.supplementName.ilike(f"%{search_query}%")).all()
@@ -92,6 +93,10 @@ if __name__ == "__main__":
 
         s = Supplement(supplementName="Creatine", supplementDescription="Helps strength")
         db.session.add(s)
+        s2 = Supplement(supplementName="Creatine Monohydrate", supplementDescription="Muscle looks fuller")
+        db.session.add(s2)
+        s3 = Supplement(supplementName="Creatine", supplementDescription="Easy to digest")
+        db.session.add(s3)
         db.session.commit()
 
     app.run(debug=True)
