@@ -9,14 +9,23 @@
 </div>
 
 {% if results %}
-  <ul>
     {% for supplement in results %}
-      <li>
-        <strong>{{ supplement.supplementName }}</strong>
-        — {{ supplement.supplementDescription }}
-      </li>
+      
+  <div class="container">
+  <div class="row">
+    <div class="col-md-3 mb-4">
+      <div class="card">
+        <img class="card-img-top" src="{{ url_for('static', filename='images/' ~ supplement.image) }}">
+        <div class="card-body">
+          <button type="button" class="btn btn-dark card1-title"><h5 class="card-title">{{ supplement.supplementName }}</h5></button>
+            <p class="card-text">{{ supplement.supplementDescription }}</p>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
     {% endfor %}
-  </ul>
 {% else %}
   <p>No results found.</p>
 {% endif %}

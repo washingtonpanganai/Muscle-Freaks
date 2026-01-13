@@ -31,7 +31,7 @@ class Supplement(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     supplementName = db.Column(db.String(100), nullable=False)
     supplementDescription = db.Column(db.String(200), nullable=False)
-    # image = db.Column(db.String(200), nullable=True)
+    image = db.Column(db.String(200), nullable=True)
 
     def __repr__(self):
         return f"Name {self.supplementName}, Description { self.supplementDescription}"
@@ -91,7 +91,7 @@ if __name__ == "__main__":
         db.drop_all()
         db.create_all()
 
-        s = Supplement(supplementName="Creatine", supplementDescription="Helps strength")
+        s = Supplement(supplementName="Creatine", supplementDescription="Helps strength", image="creatine1.jpg")
         db.session.add(s)
         s2 = Supplement(supplementName="Creatine Monohydrate", supplementDescription="Muscle looks fuller")
         db.session.add(s2)
