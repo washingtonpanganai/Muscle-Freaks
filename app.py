@@ -93,9 +93,9 @@ if __name__ == "__main__":
 
         s = Supplement(supplementName="Creatine", supplementDescription="Helps strength", image="creatine1.jpg")
         db.session.add(s)
-        s2 = Supplement(supplementName="Creatine Monohydrate", supplementDescription="Muscle looks fuller")
+        s2 = Supplement(supplementName="Micronised Creatine", supplementDescription="Muscle looks fuller", image="creatine2.jpg")
         db.session.add(s2)
-        s3 = Supplement(supplementName="Creatine", supplementDescription="Easy to digest")
+        s3 = Supplement(supplementName="Creatine Gummies", supplementDescription="Easy to digest", image="creatine3.jpg")
         db.session.add(s3)
         db.session.commit()
 
