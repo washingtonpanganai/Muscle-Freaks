@@ -85,6 +85,10 @@ def results():
         results = Supplement.query.filter(Supplement.supplementName.ilike(f"%{search_query}%")).all()
         return render_template('results.html', results=results)
     return redirect("/")
+
+@app.route("/clothing")
+def clothing():
+    return render_template("clothing.html")
         
 if __name__ == "__main__":
     with app.app_context():
