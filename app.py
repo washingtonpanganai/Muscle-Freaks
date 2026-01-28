@@ -36,6 +36,21 @@ class Supplement(db.Model):
     def __repr__(self):
         return f"Name {self.supplementName}, Description { self.supplementDescription}"
     
+'''
+Plan
+Make class for clothing
+Images are going to go in here
+On Clothing page the images are going to come from here
+Theres going to be 3x3 pictures showing clothing
+On for him there's going to be carosel of images
+'''
+
+class Clothing(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    clothingName = db.Column(db.String(100), nullable=False)
+    clothingDescription = db.Column(db.String(200), nullable=False)
+    image = db.Column(db.String(200), nullable=True)
+    
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -86,9 +101,10 @@ def results():
         return render_template('results.html', results=results)
     return redirect("/")
 
-@app.route("/clothing")
+@app.route("/clothing", methods=["GET"])
 def clothing():
-    return render_template("clothing.html")
+    clothes = Clothing.query.all()
+    return render_template("clothing.html", clothes=clothes)
         
 if __name__ == "__main__":
     with app.app_context():
@@ -101,6 +117,10 @@ if __name__ == "__main__":
         db.session.add(s2)
         s3 = Supplement(supplementName="Creatine Gummies", supplementDescription="Easy to digest", image="creatine3.jpg")
         db.session.add(s3)
+        
+
+        clothing1 = Clothing(clothingName="Male Stringer", clothingDescription="For the bold", image="alphalete-stringer.jpg")
+        db.session.add(clothing1)
         db.session.commit()
 
     app.run(debug=True)
