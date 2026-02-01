@@ -205,3 +205,13 @@ input[type=submit]:hover {
 .clothing-header a:hover {
   color: white;
 }
+
+.card {
+  height: 100%;
+}
+
+.card-img-top {
+  height: 300px;          
+  width: 100%;
+  object-fit: cover;      
+}

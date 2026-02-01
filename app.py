@@ -113,14 +113,31 @@ if __name__ == "__main__":
 
         s = Supplement(supplementName="Creatine", supplementDescription="Helps strength", image="creatine1.jpg")
         db.session.add(s)
+
         s2 = Supplement(supplementName="Micronised Creatine", supplementDescription="Muscle looks fuller", image="creatine2.jpg")
         db.session.add(s2)
+
         s3 = Supplement(supplementName="Creatine Gummies", supplementDescription="Easy to digest", image="creatine3.jpg")
         db.session.add(s3)
         
 
-        clothing1 = Clothing(clothingName="Male Stringer", clothingDescription="For the bold", image="alphalete-stringer.jpg")
+        clothing1 = Clothing(clothingName="Clothing Image 1", clothingDescription="For the bold", image="alphalete-stringer.jpg")
         db.session.add(clothing1)
+        
+        clothing2 = Clothing(clothingName="Clothing Image 2", clothingDescription="For the bold", image="sara-saffari.jpg")
+        db.session.add(clothing2)
+        
+        clothing3 = Clothing(clothingName="Clothing Image 3", clothingDescription="For the bold", image="cbum2.jpg")
+        db.session.add(clothing3)
+        
+        clothing4 = Clothing(clothingName="Clothing Image 4", clothingDescription="For the bold", image="lean.jpg")
+        db.session.add(clothing4)
+
+        clothing5 = Clothing(clothingName="Clothing Image 5", clothingDescription="For the bold", image="lex3.jpg")
+        db.session.add(clothing5)
+
+        clothing6 = Clothing(clothingName="Clothing Image 6", clothingDescription="For the bold", image="alphalete-women.jpg")
+        db.session.add(clothing6)
         db.session.commit()
 
     app.run(debug=True)

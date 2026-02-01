@@ -170,4 +170,15 @@ input[type=submit]:hover {
 
 .clothing-header a:hover {
   color: white;
+}
+
+.card {
+  height: 100%;
+}
+
+.card-img-top {
+  height: 300px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }/*# sourceMappingURL=style.css.map */
