@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block body_class %}clothingForHim-background{% endblock %}
+
+{% block body %}
+
+<div class ="hero">
+    <video autoplay muted loop>
+        <source src="{{ url_for('static', filename='videos/Tren Twins edit.mp4') }}" type="video/mp4">
+    </video>
+</div>
+
+<div class="container">
+    <div class="row">
+
+        {% for clothing in clothes %}
+  
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img class="card-img-top" src="{{ url_for('static', filename='images/' ~ clothing.image) }}">
+        <div class="card-body">
+          <button type="button" class="btn btn-dark card1-title"><h5 class="card-title">{{ clothing.clothingName }}</h5></button>
+            <p class="card-text">{{ clothing.clothingDescription }}</p>
+          </div>
+      </div>
+    </div>
+
+    {% endfor %}
+
+
+{% endblock %}

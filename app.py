@@ -105,6 +105,15 @@ def results():
 def clothing():
     clothes = Clothing.query.all()
     return render_template("clothing.html", clothes=clothes)
+
+@app.route("/clothingForHim", methods=["GET"])
+def clothingForHim():
+    clothes = Clothing.query.all()
+    return render_template("clothingForHim.html", clothes=clothes)
+
+@app.route("/clothingForHer", methods=["GET"])
+def clothingForHer():
+    return render_template("clothingForHer.html")
         
 if __name__ == "__main__":
     with app.app_context():

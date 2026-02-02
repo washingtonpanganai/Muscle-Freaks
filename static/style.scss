@@ -215,3 +215,33 @@ input[type=submit]:hover {
   width: 100%;
   object-fit: cover;      
 }
+
+.clothing-header {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.clothingForHim-background {
+  background-color: #212529;
+}
+
+.hero {
+  height: 30vh;
+  padding-bottom: 20px;
+}
+
+.hero video {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+  display: block;
+  object-fit: cover;
+}
+
+// .navbar h1 {
+//   margin: 0;
+//   padding: 0;
+//   line-height: 1;
+// }
