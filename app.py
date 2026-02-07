@@ -50,6 +50,7 @@ class Clothing(db.Model):
     clothingName = db.Column(db.String(100), nullable=False)
     clothingDescription = db.Column(db.String(200), nullable=False)
     image = db.Column(db.String(200), nullable=True)
+    gender = db.Column(db.String(20), nullable=False)
     
 @app.route("/")
 def index():
@@ -108,12 +109,18 @@ def clothing():
 
 @app.route("/clothingForHim", methods=["GET"])
 def clothingForHim():
-    clothes = Clothing.query.all()
+    clothes = Clothing.query.filter_by(gender="male").all()
     return render_template("clothingForHim.html", clothes=clothes)
 
 @app.route("/clothingForHer", methods=["GET"])
 def clothingForHer():
-    return render_template("clothingForHer.html")
+    clothes = Clothing.query.filter_by(gender="female").all()
+    return render_template("clothingForHer.html", clothes=clothes)
+
+# @app.route("/clothingForHim", methods=["GET"])
+# def clothingForHim():
+#     clothes = Clothing.query.all()
+#     return render_template("clothingForHim.html", clothes=clothes)
         
 if __name__ == "__main__":
     with app.app_context():
@@ -130,23 +137,29 @@ if __name__ == "__main__":
         db.session.add(s3)
         
 
-        clothing1 = Clothing(clothingName="Clothing Image 1", clothingDescription="For the bold", image="alphalete-stringer.jpg")
-        db.session.add(clothing1)
-        
-        clothing2 = Clothing(clothingName="Clothing Image 2", clothingDescription="For the bold", image="sara-saffari.jpg")
-        db.session.add(clothing2)
-        
-        clothing3 = Clothing(clothingName="Clothing Image 3", clothingDescription="For the bold", image="cbum2.jpg")
-        db.session.add(clothing3)
-        
-        clothing4 = Clothing(clothingName="Clothing Image 4", clothingDescription="For the bold", image="lean.jpg")
-        db.session.add(clothing4)
+        lexClothing1 = Clothing(clothingName="Constriction Compression", clothingDescription="For the bold", image="lex.jpg", gender="male")
+        db.session.add(lexClothing1)
 
-        clothing5 = Clothing(clothingName="Clothing Image 5", clothingDescription="For the bold", image="lex3.jpg")
-        db.session.add(clothing5)
+        leanClothing1 = Clothing(clothingName="Sleek Compression", clothingDescription="For the bold", image="lean.jpg", gender="female")
+        db.session.add(leanClothing1)
+        
+        chrisClothing1 = Clothing(clothingName="Dark Hero Compression V1", clothingDescription="For the bold", image="chris.jpg", gender="male")
+        db.session.add(chrisClothing1)
 
-        clothing6 = Clothing(clothingName="Clothing Image 6", clothingDescription="For the bold", image="alphalete-women.jpg")
-        db.session.add(clothing6)
+        saraClothing1 = Clothing(clothingName="Sleek Compression", clothingDescription="For the bold", image="sara.jpg", gender="female")
+        db.session.add(saraClothing1)
+        
+        mikeClothing1 = Clothing(clothingName="Dark Hero Compression V2", clothingDescription="For the bold", image="mike.jpg", gender="male")
+        db.session.add(mikeClothing1)
+        
+        alexClothing4 = Clothing(clothingName="Relaxed Compression", clothingDescription="For the bold", image="alex2.jpg", gender="male")
+        db.session.add(alexClothing4)
+
+        lexClothing2 = Clothing(clothingName="Strong Hero Compression", clothingDescription="For the bold", image="lex3.jpg", gender="male")
+        db.session.add(lexClothing2)
+
+        chrisClothing2 = Clothing(clothingName="Slim Compression", clothingDescription="For the bold", image="chris2.jpg", gender="male")
+        db.session.add(chrisClothing2)
         db.session.commit()
 
     app.run(debug=True)
