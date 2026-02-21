@@ -104,7 +104,7 @@ def results():
 
 @app.route("/clothing", methods=["GET"])
 def clothing():
-    clothes = Clothing.query.all()
+    clothes = Clothing.query.limit(9).all()
     return render_template("clothing.html", clothes=clothes)
 
 @app.route("/clothingForHim", methods=["GET"])
@@ -140,26 +140,38 @@ if __name__ == "__main__":
         lexClothing1 = Clothing(clothingName="Constriction Compression", clothingDescription="For the bold", image="lex.jpg", gender="male")
         db.session.add(lexClothing1)
 
-        leanClothing1 = Clothing(clothingName="Sleek Compression", clothingDescription="For the bold", image="lean.jpg", gender="female")
+        leanClothing1 = Clothing(clothingName="Sleek Crop Top", clothingDescription="For the bold", image="lean.jpg", gender="female")
         db.session.add(leanClothing1)
         
         chrisClothing1 = Clothing(clothingName="Dark Hero Compression V1", clothingDescription="For the bold", image="chris.jpg", gender="male")
         db.session.add(chrisClothing1)
 
-        saraClothing1 = Clothing(clothingName="Sleek Compression", clothingDescription="For the bold", image="sara.jpg", gender="female")
+        saraClothing1 = Clothing(clothingName="Sleek Sports Bra", clothingDescription="For the bold", image="sara.jpg", gender="female")
         db.session.add(saraClothing1)
         
         mikeClothing1 = Clothing(clothingName="Dark Hero Compression V2", clothingDescription="For the bold", image="mike.jpg", gender="male")
         db.session.add(mikeClothing1)
         
-        alexClothing4 = Clothing(clothingName="Relaxed Compression", clothingDescription="For the bold", image="alex2.jpg", gender="male")
-        db.session.add(alexClothing4)
+        leanClothing2 = Clothing(clothingName="Relaxed Set", clothingDescription="For the bold", image="lean2.jpg", gender="female")
+        db.session.add(leanClothing2)
 
         lexClothing2 = Clothing(clothingName="Strong Hero Compression", clothingDescription="For the bold", image="lex3.jpg", gender="male")
         db.session.add(lexClothing2)
 
+        arielClothing1 = Clothing(clothingName="Oversized Hoodie", clothingDescription="For the bold", image="ariel.jpg", gender="female")
+        db.session.add(arielClothing1)
+
         chrisClothing2 = Clothing(clothingName="Slim Compression", clothingDescription="For the bold", image="chris2.jpg", gender="male")
         db.session.add(chrisClothing2)
+
+        alexClothing = Clothing(clothingName="Tight Compression", clothingDescription="For the bold", image="alex2.jpg", gender="male")
+        db.session.add(alexClothing)
+
+        leanClothing3 = Clothing(clothingName="Sleek Top", clothingDescription="For the bold", image="lean3.jpg", gender="female")
+        db.session.add(leanClothing3)
+
+        arielClothing2 = Clothing(clothingName="Relaxed Tshirt", clothingDescription="For the bold", image="ariel2.jpg", gender="female")
+        db.session.add(arielClothing2)
         db.session.commit()
 
     app.run(debug=True)
