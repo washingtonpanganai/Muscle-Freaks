@@ -191,10 +191,6 @@ input[type=submit]:hover {
   background-color: #212529;
 }
 
-.clothingForHer-background {
-  background-color: #212529;
-}
-
 .hero {
   height: 30vh;
   padding-bottom: 20px;
@@ -210,4 +206,17 @@ input[type=submit]:hover {
   display: block;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.clothingForHer-background {
+  background-color: #212529;
+}
+
+.supplements-background {
+  background-color: #212529;
+}
+
+.supplements-header {
+  font-family: "Times New Roman", Times, serif;
+  color: white;
 }/*# sourceMappingURL=style.css.map */

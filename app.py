@@ -117,6 +117,11 @@ def clothingForHer():
     clothes = Clothing.query.filter_by(gender="female").all()
     return render_template("clothingForHer.html", clothes=clothes)
 
+@app.route("/supplements", methods=["GET"])
+def supplements():
+    supplements = Supplement.query.all()
+    return render_template("supplements.html", supplements = supplements)
+
 # @app.route("/clothingForHim", methods=["GET"])
 # def clothingForHim():
 #     clothes = Clothing.query.all()
@@ -135,7 +140,15 @@ if __name__ == "__main__":
 
         s3 = Supplement(supplementName="Creatine Gummies", supplementDescription="Easy to digest", image="creatine3.jpg")
         db.session.add(s3)
-        
+
+        s4 = Supplement(supplementName="Per4m Protein", supplementDescription="Whey Protein", image="per4m-protein.jpg")
+        db.session.add(s4)
+
+        s5 = Supplement(supplementName="Pre Workout", supplementDescription="Pre Workout", image="pre-workout.jpg")
+        db.session.add(s5)
+
+        s6 = Supplement(supplementName="Turkesterone", supplementDescription="Enhance Performance", image="turk.jpg")
+        db.session.add(s6)
 
         lexClothing1 = Clothing(clothingName="Constriction Compression", clothingDescription="For the bold", image="lex.jpg", gender="male")
         db.session.add(lexClothing1)

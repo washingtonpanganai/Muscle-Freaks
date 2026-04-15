@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block body_class %}supplements-background{% endblock %}
+
+{% block body %}
+
+<div class ="hero">
+    <video autoplay muted loop>
+        <source src="{{ url_for('static', filename='videos/supplements-video.mp4') }}" type="video/mp4">
+    </video>
+</div>
+
+<div class="container text-center my-4 supplements-header">
+  <h1 class="display-3 fw-bold">Push Harder</h1>
+  <h1 class="display-3 fw-bold">Than</h1>
+  <h1 class="display-3 fw-bold">Before</h1>
+</div>
+
+<div class ="container">
+    <div class="row">
+
+        {%for supplement in supplements %}
+
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <img class="card-img-top" src="{{ url_for('static', filename='images/' ~ supplement.image) }}">
+        <div class="card-body">
+          <button type="button" class="btn btn-dark card1-title"><h5 class="card-title">{{ supplement.supplementName }}</h5></button>
+            <p class="card-text">{{ supplement.supplementDescription }}</p>
+          </div>
+    </div>
+</div>
+
+  {% endfor %}
+
+{% endblock %}
