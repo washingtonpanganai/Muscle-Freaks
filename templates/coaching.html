@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block body_class %}coaching-background{% endblock %}
+
+{% block body %}
+
+<div class="container text-center my-4 supplements-header">
+  <h1 class="display-3 fw-bold">Reach Out</h1>
+  <h1 class="display-3 fw-bold">For</h1>
+  <h1 class="display-3 fw-bold">Coaching</h1>
+</div>
+
+<form>
+        <input name="name" placeholder="Enter your name">
+    </div>
+    <div class="coaching-form">
+        <input name="email" placeholder="Enter your email">    
+    </div>
+    <div class="coaching-form">
+        <textarea name="message" placeholder="Enter your message">    
+    </div>
+    <button type="submit" class="btn btn-dark coaching-submit">Submit</button>
+</form>
+
+{% endblock %}

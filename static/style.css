@@ -219,4 +219,8 @@ input[type=submit]:hover {
 .supplements-header {
   font-family: "Times New Roman", Times, serif;
   color: white;
+}
+
+.coaching-background {
+  background-color: #212529;
 }/*# sourceMappingURL=style.css.map */

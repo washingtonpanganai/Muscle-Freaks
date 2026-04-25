@@ -122,6 +122,10 @@ def supplements():
     supplements = Supplement.query.all()
     return render_template("supplements.html", supplements = supplements)
 
+@app.route("/coaching")
+def coaching():
+    return render_template("coaching.html")
+
 # @app.route("/clothingForHim", methods=["GET"])
 # def clothingForHim():
 #     clothes = Clothing.query.all()
