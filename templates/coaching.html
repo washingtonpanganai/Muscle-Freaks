@@ -10,7 +10,7 @@
   <h1 class="display-3 fw-bold">Coaching</h1>
 </div>
 
-<form>
+<!-- <form class="coaching-form">
         <input name="name" placeholder="Enter your name">
     </div>
     <div class="coaching-form">
@@ -20,6 +20,18 @@
         <textarea name="message" placeholder="Enter your message">    
     </div>
     <button type="submit" class="btn btn-dark coaching-submit">Submit</button>
+</form> -->
+
+<form class="coaching-form">
+  <h5 class="coachingClientNameHeader">Enter Your Name</h5>
+  <input type="text" name="client_name" placeholder="Client Name" class="ClientNameClass">
+
+  <h5 class="coachingClientEmailHeader">Enter Your Email</h5>
+  <input type="text" name="client_email" placeholder="Client Email" class="ClientEmailClass">
+
+  <h5 class="coachingClientMessageHeader">Enter Your Message</h5>
+  <textarea name ="client_message" rows="4" cols="50" placeholder="What are you looking for in coaching?" class="ClientMessageClass"></textarea>
+  <input type="submit" value="Submit">
 </form>
 
 {% endblock %}
