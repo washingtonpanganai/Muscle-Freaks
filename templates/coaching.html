@@ -22,15 +22,15 @@
     <button type="submit" class="btn btn-dark coaching-submit">Submit</button>
 </form> -->
 
-<form class="coaching-form">
+<form action="/coaching-submit" method="POST" class="coaching-form">
   <h5 class="coachingClientNameHeader">Enter Your Name</h5>
-  <input type="text" name="client_name" placeholder="Client Name" class="ClientNameClass">
+  <input type="text" name="client_name" placeholder="Client Name" required class="clientNameClass">
 
   <h5 class="coachingClientEmailHeader">Enter Your Email</h5>
-  <input type="text" name="client_email" placeholder="Client Email" class="ClientEmailClass">
+  <input type="email" name="client_email" placeholder="Client Email" required class="clientEmailClass">
 
   <h5 class="coachingClientMessageHeader">Enter Your Message</h5>
-  <textarea name ="client_message" rows="4" cols="50" placeholder="What are you looking for in coaching?" class="ClientMessageClass"></textarea>
+  <textarea name ="client_message" rows="4" cols="50" placeholder="What are you looking for in coaching?" class="clientMessageClass"></textarea>
   <input type="submit" value="Submit">
 </form>
 

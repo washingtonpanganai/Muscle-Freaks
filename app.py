@@ -1,12 +1,21 @@
 from flask import Flask, render_template, request, redirect
 from flask_scss import Scss
 from flask_sqlalchemy import SQLAlchemy
+from flask_mail import Mail, Message
 import requests
 
 app = Flask(__name__)
 Scss(app)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'washpangs@gmail.com'
+app.config['MAIL_PASSWORD'] = 'fsds hqqj swtd fyiy'
+
+mail = Mail(app)
+
 db = SQLAlchemy(app)
 
 
@@ -124,7 +133,66 @@ def supplements():
 
 @app.route("/coaching")
 def coaching():
+
+    msg = Message(
+        subject="Hello",
+        sender="from@example.com",
+        recipients=["washpangs@gmail.com"],
+    )
+
+    
+    msg.body = "testing"
+
+    mail.send(msg)
     return render_template("coaching.html")
+
+@app.route("/coaching-submit", methods=["POST"])
+def coaching_submit():
+
+    name = request.form.get("client_name")
+    email = request.form.get("client_email")
+    message = request.form.get("client_message")
+
+    # Email sent to YOU
+    admin_msg = Message(
+        subject=f"New Coaching Request from {name}",
+        sender=app.config['MAIL_USERNAME'],
+        recipients=["washpangs@gmail.com"]
+    )
+
+    admin_msg.body = f"""
+    Name: {name}
+    Email: {email}
+
+    Message:
+    {message}
+    """
+
+    mail.send(admin_msg)
+
+    # Auto reply sent to USER
+    user_msg = Message(
+        subject="We received your coaching request",
+        sender=app.config['MAIL_USERNAME'],
+        recipients=[email]
+    )
+
+    user_msg.body = f"""
+    Hi {name},
+
+    Thanks for reaching out about coaching.
+
+    We received your message and will contact you soon.
+
+    Your message:
+    {message}
+
+    - Coaching Team
+    """
+
+    mail.send(user_msg)
+
+    return render_template("thankyou.html")
 
 # @app.route("/clothingForHim", methods=["GET"])
 # def clothingForHim():
