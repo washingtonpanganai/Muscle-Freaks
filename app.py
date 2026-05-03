@@ -3,6 +3,10 @@ from flask_scss import Scss
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail, Message
 import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 Scss(app)
@@ -11,8 +15,8 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'washpangs@gmail.com'
-app.config['MAIL_PASSWORD'] = 'fsds hqqj swtd fyiy'
+app.config['MAIL_USERNAME'] = os.environ.get("MAIL_USERNAME")
+app.config['MAIL_PASSWORD'] = os.environ.get("MAIL_PASSWORD")
 
 mail = Mail(app)
 
