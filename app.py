@@ -146,53 +146,53 @@ def coaching():
     mail.send(msg)
     return render_template("coaching.html")
 
-@app.route("/coaching-submit", methods=["POST"])
-def coaching_submit():
+# @app.route("/coaching-submit", methods=["POST"])
+# def coaching_submit():
 
-    name = request.form.get("client_name")
-    email = request.form.get("client_email")
-    message = request.form.get("client_message")
+#     name = request.form.get("client_name")
+#     email = request.form.get("client_email")
+#     message = request.form.get("client_message")
 
-    # Email sent to YOU
-    admin_msg = Message(
-        subject=f"New Coaching Request from {name}",
-        sender=app.config['MAIL_USERNAME'],
-        recipients=["washpangs@gmail.com"]
-    )
+#     # Email sent to YOU
+#     admin_msg = Message(
+#         subject=f"New Coaching Request from {name}",
+#         sender=app.config['MAIL_USERNAME'],
+#         recipients=["washpangs@gmail.com"]
+#     )
 
-    admin_msg.body = f"""
-    Name: {name}
-    Email: {email}
+#     admin_msg.body = f"""
+#     Name: {name}
+#     Email: {email}
 
-    Message:
-    {message}
-    """
+#     Message:
+#     {message}
+#     """
 
-    mail.send(admin_msg)
+#     mail.send(admin_msg)
 
-    # Auto reply sent to USER
-    user_msg = Message(
-        subject="We received your coaching request",
-        sender=app.config['MAIL_USERNAME'],
-        recipients=[email]
-    )
+#     # Auto reply sent to USER
+#     user_msg = Message(
+#         subject="We received your coaching request",
+#         sender=app.config['MAIL_USERNAME'],
+#         recipients=[email]
+#     )
 
-    user_msg.body = f"""
-    Hi {name},
+#     user_msg.body = f"""
+#     Hi {name},
 
-    Thanks for reaching out about coaching.
+#     Thanks for reaching out about coaching.
 
-    We received your message and will contact you soon.
+#     We received your message and will contact you soon.
 
-    Your message:
-    {message}
+#     Your message:
+#     {message}
 
-    - Coaching Team
-    """
+#     - Coaching Team
+#     """
 
-    mail.send(user_msg)
+#     mail.send(user_msg)
 
-    return render_template("thankyou.html")
+#     return render_template("thankyou.html")
 
 # @app.route("/clothingForHim", methods=["GET"])
 # def clothingForHim():
