@@ -270,4 +270,14 @@ input[type=submit]:hover {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+.coaching-background {
+  background-color: #212529;
+}
+
+.coaching-submit-header {
+  color: white;
+  text-align: center;
+  margin-top: 40px;
 }/*# sourceMappingURL=style.css.map */

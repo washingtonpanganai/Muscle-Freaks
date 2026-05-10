@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block body_class %}coaching-background{% endblock %}
+
+{% block body %}
+
+<div class="jumbotron">
+  <img src="{{ url_for('static', filename='images/arnold.jpg') }}" alt="Arnold Schwarzenegger" class="w-100" style="height: 50vh; object-fit: cover;">
+</div>
+
+<h1 class="coaching-submit-header">Thank you for reaching out! We will get back to you as soon as possible.</h1>
+
+{% endblock %}
