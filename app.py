@@ -141,16 +141,16 @@ def supplements():
 @app.route("/coaching")
 def coaching():
 
-    msg = Message(
-        subject="Hello",
-        sender=app.config['MAIL_USERNAME'],
-        recipients=["washpangs@gmail.com"],
-    )
+    # msg = Message(
+    #     subject="Hello",
+    #     sender=app.config['MAIL_USERNAME'],
+    #     recipients=["washpangs@gmail.com"],
+    # )
 
     
-    msg.body = "testing"
+    # msg.body = "testing"
 
-    mail.send(msg)
+    # mail.send(msg)
     return render_template("coaching.html")
 
 @app.route("/coaching-submit", methods=["POST"])
@@ -190,9 +190,6 @@ def coaching_submit():
     Thanks for reaching out about coaching.
 
     We received your message and will contact you soon.
-
-    Your message:
-    {message}
 
     - Coaching Team
     """
