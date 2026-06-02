@@ -118,7 +118,7 @@ def results():
         return render_template('results.html', results=results)
     return redirect("/")
 
-@app.route("/clothing", methods=["GET"])
+@app.route("/clothing", methods=["GET", "POST "])
 def clothing():
     clothes = Clothing.query.limit(9).all()
     return render_template("clothing.html", clothes=clothes)
@@ -132,6 +132,52 @@ def clothingForHim():
 def clothingForHer():
     clothes = Clothing.query.filter_by(gender="female").all()
     return render_template("clothingForHer.html", clothes=clothes)
+
+@app.route("/comingSoon")
+def comingSoon():
+    return render_template("comingSoon.html")
+
+@app.route("/preorder/<int:id>")
+def preorder(id):
+    clothing_item = Clothing.query.get_or_404(id)
+    
+    if request.method == "POST":
+
+        name = request.form.get("name")
+        email = request.form.get("email")
+        size = request.form.get("size")
+
+        msg = Message(
+            subject="Pre-Order Confirmation",
+            sender=app.config['MAIL_USERNAME'],
+            recipients=[email]
+        )
+
+        msg.body = f"""
+Hi {name},
+
+Your pre-order has been received.
+
+Item: {clothing_item.clothingName}
+Size: {size}
+
+We'll contact you when this item becomes available.
+
+Thanks,
+Muscle Freaks
+"""
+
+        mail.send(msg)
+
+        return render_template(
+            "preorder_success.html",
+            clothing_item=clothing_item
+        )
+
+    return render_template(
+        "preorder.html",
+        clothing_item=clothing_item
+    )
 
 @app.route("/supplements", methods=["GET"])
 def supplements():

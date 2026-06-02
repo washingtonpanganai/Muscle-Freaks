@@ -17,9 +17,12 @@
     <div class="col-md-4 mb-4">
       <div class="card">
         <img class="card-img-top" src="{{ url_for('static', filename='images/' ~ clothing.image) }}">
-        <div class="card-body">
-          <button type="button" class="btn btn-dark card1-title"><h5 class="card-title">{{ clothing.clothingName }}</h5></button>
-            <p class="card-text">{{ clothing.clothingDescription }}</p>
+          <div class="card-body">
+            <h5 class="card-title">{{ clothing.clothingName }}</h5>
+              <a href="{{ url_for('preorder', id=clothing.id) }}" class="btn btn-dark card1-title">
+                <h5 class="card-title">Pre Order</h5>
+              </a>
+            
           </div>
       </div>
     </div>

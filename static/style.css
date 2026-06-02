@@ -280,4 +280,26 @@ input[type=submit]:hover {
   color: white;
   text-align: center;
   margin-top: 40px;
+}
+
+.comingSoon-background {
+  background-color: #212529;
+}
+
+.comingSoon-heading {
+  color: white;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.card-text {
+  color: white;
+}
+
+.card-title {
+  color: white;
+}
+
+.preorder-background {
+  background-color: #212529;
 }/*# sourceMappingURL=style.css.map */
