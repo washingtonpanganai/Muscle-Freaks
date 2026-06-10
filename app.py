@@ -137,7 +137,7 @@ def clothingForHer():
 def comingSoon():
     return render_template("comingSoon.html")
 
-@app.route("/preorder/<int:id>")
+@app.route("/preorder/<int:id>", methods=["GET", "POST"])
 def preorder(id):
     clothing_item = Clothing.query.get_or_404(id)
     

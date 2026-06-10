@@ -302,4 +302,10 @@ input[type=submit]:hover {
 
 .preorder-background {
   background-color: #212529;
+}
+
+.pre-order-success {
+  color: white;
+  text-align: center;
+  margin-top: 40px;
 }/*# sourceMappingURL=style.css.map */
